@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f4f0">
+  <title>Administración - ChocoMagia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="sttely.css">
+</head>
+<body class="admin-page" data-requires-admin="true">
+  <header class="admin-header">
+    <a href="index.html" class="brand-mark" aria-label="ChocoMagia, volver a la tienda">
+      <img src="img/logo.jpeg" alt="Logo de ChocoMagia" class="site-logo">
+      <span>Choco<span class="brand-accent">Magia</span></span>
+    </a>
+    <div class="admin-user">
+      <span class="admin-user-label"><i class="fa-solid fa-circle-user"></i> Administrador</span>
+      <button id="logoutButton" class="logout-button" type="button" title="Cerrar sesión"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Cerrar sesión</span></button>
+    </div>
+  </header>
+
+  <main class="admin-content">
+    <div class="admin-title-row">
+      <div>
+        <p class="eyebrow">Configuración de la tienda</p>
+        <h1 class="dashboard-title">Panel de administración</h1>
+      </div>
+    </div>
+
+    <div class="demo-banner" role="note"><i class="fa-solid fa-circle-info"></i><span>Los cambios se guardan en este navegador y se reflejan al volver a cargar la tienda. El acceso administrativo es una demostración y no está protegido por un servidor.</span></div>
+
+    <nav class="admin-tabs" aria-label="Secciones administrativas" role="tablist">
+      <button type="button" class="admin-tab" role="tab" id="productsTab" aria-controls="productsPanel" aria-selected="true" data-admin-tab="products"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i> Productos</button>
+      <button type="button" class="admin-tab" role="tab" id="settingsTab" aria-controls="settingsPanel" aria-selected="false" data-admin-tab="settings"><i class="fa-solid fa-truck" aria-hidden="true"></i> Envíos y datos</button>
+    </nav>
+
+    <section id="productsPanel" class="admin-panel" role="tabpanel" aria-labelledby="productsTab">
+      <div class="section-heading">
+        <div><p class="eyebrow">Catálogo</p><h2>Productos y precios</h2></div>
+        <span id="productCount" class="orders-count"></span>
+      </div>
+
+      <form id="productForm" class="admin-form">
+        <h3 id="productFormTitle">Agregar producto</h3>
+        <input id="productId" name="productId" type="hidden">
+        <div class="admin-form-grid">
+          <label class="admin-field">Nombre<input id="productName" name="name" type="text" required maxlength="80"></label>
+          <label class="admin-field">Categoría<select id="productCategory" name="category"><option value="chocobanano">Chocobanano</option><option value="paleta">Paleta en vaso</option></select></label>
+          <label class="admin-field">Precio (Lps)<input id="productPrice" name="price" type="number" min="0" step="0.01" required></label>
+          <label class="admin-field">Emoji<input id="productEmoji" name="emoji" type="text" maxlength="8" placeholder="🍌🍫"></label>
+          <label class="admin-field admin-field-wide">Descripción<input id="productDescription" name="description" type="text" maxlength="160"></label>
+        </div>
+        <label class="admin-checkbox"><input id="productActive" name="active" type="checkbox" checked> Disponible en la tienda</label>
+        <div class="admin-form-actions">
+          <button id="saveProductButton" class="admin-primary-button" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Guardar producto</button>
+          <button id="cancelProductEdit" class="admin-secondary-button" type="button" hidden>Cancelar edición</button>
+        </div>
+        <p id="productMessage" class="admin-message" role="status" hidden></p>
+      </form>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Disponible</th><th>Acciones</th></tr></thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="settingsPanel" class="admin-panel" role="tabpanel" aria-labelledby="settingsTab" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">Operación</p><h2>Envíos y datos del negocio</h2></div>
+      </div>
+
+      <form id="storeSettingsForm" class="admin-form">
+        <h3>Entrega y pedidos</h3>
+        <div class="admin-form-grid">
+          <label class="admin-field">WhatsApp del negocio<input id="settingWhatsapp" name="whatsappNumber" type="tel" inputmode="numeric"></label>
+          <label class="admin-field">Costo de envío (Lps)<input id="settingDeliveryFee" name="deliveryFee" type="number" min="0" step="0.01"></label>
+          <label class="admin-field">Pedido mínimo (Lps)<input id="settingMinimumOrder" name="minimumOrder" type="number" min="0" step="0.01"></label>
+          <label class="admin-field admin-field-wide">Zona de entrega<input id="settingDeliveryArea" name="deliveryArea" type="text" maxlength="120" placeholder="Colonias, municipio o zona de cobertura"></label>
+        </div>
+        <div class="admin-checkboxes">
+          <label class="admin-checkbox"><input id="settingDeliveryEnabled" name="deliveryEnabled" type="checkbox"> Ofrecer entrega a domicilio</label>
+          <label class="admin-checkbox"><input id="settingPickupEnabled" name="pickupEnabled" type="checkbox"> Permitir recoger en el local</label>
+        </div>
+
+        <h3>Depósitos y transferencia</h3>
+        <div class="admin-form-grid">
+          <label class="admin-field">Titular · Banco Atlántida<input id="settingAtlantidaHolder" name="atlantidaHolder" type="text" maxlength="100"></label>
+          <label class="admin-field">Número de cuenta · Atlántida<input id="settingAtlantidaNumber" name="atlantidaNumber" type="text" inputmode="numeric" maxlength="40"></label>
+          <label class="admin-field">Titular · BAC<input id="settingBacHolder" name="bacHolder" type="text" maxlength="100"></label>
+          <label class="admin-field">Número de cuenta · BAC<input id="settingBacNumber" name="bacNumber" type="text" inputmode="numeric" maxlength="40"></label>
+        </div>
+
+        <h3>Redes sociales</h3>
+        <div class="admin-form-grid">
+          <label class="admin-field">Facebook<input id="settingFacebook" name="facebookUrl" type="url" placeholder="https://facebook.com/..."></label>
+          <label class="admin-field">Instagram<input id="settingInstagram" name="instagramUrl" type="url" placeholder="https://instagram.com/..."></label>
+          <label class="admin-field">TikTok<input id="settingTiktok" name="tiktokUrl" type="url" placeholder="https://tiktok.com/@..."></label>
+        </div>
+        <div class="admin-form-actions">
+          <button class="admin-primary-button" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Guardar configuración</button>
+        </div>
+        <p id="settingsMessage" class="admin-message" role="status" hidden></p>
+      </form>
+    </section>
+  </main>
+  <script src="store-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5eb">
+  <title>Acceso administrativo - ChocoMagia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="sttely.css">
+</head>
+<body class="admin-page">
+  <main class="auth-layout">
+    <aside class="auth-aside">
+      <a href="index.html" class="brand-mark" aria-label="Volver a ChocoMagia">
+        <img src="img/logo.jpeg" alt="Logo de ChocoMagia" class="site-logo">
+        <span>Choco<span class="brand-accent">Magia</span></span>
+      </a>
+      <div>
+        <p class="eyebrow">Administración</p>
+        <h1 class="auth-title">Un vistazo dulce a tu negocio.</h1>
+        <p class="muted-copy">Accede al panel de pedidos de ChocoMagia.</p>
+      </div>
+      <p class="demo-note"><i class="fa-solid fa-circle-info"></i> Demostración: este acceso no protege datos reales.</p>
+    </aside>
+
+    <section class="auth-main" aria-labelledby="login-title">
+      <form id="loginForm" class="auth-form">
+        <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver a la tienda</a>
+        <p class="eyebrow">Panel privado</p>
+        <h2 id="login-title" class="form-title">Iniciar sesión</h2>
+        <p class="muted-copy form-intro">Ingresa con la cuenta de demostración.</p>
+
+        <label class="field-label" for="adminEmail">Correo electrónico</label>
+        <input class="auth-input" id="adminEmail" name="email" type="email" autocomplete="username" placeholder="admin@chocomagia.demo" required>
+
+        <label class="field-label" for="adminPassword">Contraseña</label>
+        <input class="auth-input" id="adminPassword" name="password" type="password" autocomplete="current-password" placeholder="Escribe la contraseña" required>
+
+        <p id="loginError" class="login-error" role="alert" hidden>Correo o contraseña incorrectos.</p>
+        <button class="auth-submit" type="submit">Entrar al panel <i class="fa-solid fa-arrow-right"></i></button>
+
+        <div class="demo-credentials">
+          <strong>Datos de prueba</strong>
+          <span>admin@chocomagia.demo</span>
+          <span>Dulce2026!</span>
+        </div>
+        <p class="security-warning">No uses esta contraseña en una cuenta real. La validación se realiza en el navegador.</p>
+      </form>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

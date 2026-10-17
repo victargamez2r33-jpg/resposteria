@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta con ChocoMagia y envía tu pedido por WhatsApp.">
+  <title>Contacto y pedidos | ChocoMagia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
+  <link rel="stylesheet" href="sttely.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#FFF9EF] text-brand-brown">
+  <header class="sticky top-0 z-40 border-b border-brand-brown/10 bg-[#FFF9EF]/95 px-4 py-3 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
+      <a href="index.html" class="flex items-center gap-3 font-title text-2xl font-bold text-brand-pink" aria-label="ChocoMagia, inicio">
+        <img src="img/logo.jpeg" alt="Logo de ChocoMagia" class="site-logo">
+        <span>Choco<span class="text-brand-cyan">Magia</span></span>
+      </a>
+      <nav aria-label="Navegación principal" class="order-3 w-full md:order-2 md:w-auto">
+        <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2 font-semibold">
+          <li><a href="index.html" class="hover:text-brand-pink">Inicio</a></li>
+          <li><a href="index.html#menu" class="hover:text-brand-pink">Menú</a></li>
+          <li><a href="nosotros.html" class="hover:text-brand-pink">Nosotros</a></li>
+          <li><a href="variedades.html" class="hover:text-brand-pink">Variedades</a></li>
+          <li><a href="contacto.html" aria-current="page" class="text-brand-pink">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="#contactOrderForm" class="inline-flex items-center gap-2 rounded-full bg-brand-pink px-4 py-2 font-bold text-white hover:bg-pink-600">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Hacer pedido
+      </a>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-7xl flex-grow px-4 py-10 lg:px-8">
+    <div class="mb-8 max-w-2xl">
+      <p class="mb-2 font-bold uppercase tracking-widest text-brand-pink">Estamos para atenderte</p>
+      <h1 class="font-title text-4xl font-bold text-brand-brown sm:text-5xl">Contacto y pedidos</h1>
+      <p class="mt-3 text-brand-brown/70">Cuéntanos qué se te antoja y prepara tu pedido para enviarlo por WhatsApp.</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:gap-16">
+      <section aria-labelledby="order-title">
+        <h2 id="order-title" class="mb-5 font-title text-2xl font-bold">Tu pedido</h2>
+        <form id="contactOrderForm" class="space-y-5">
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label for="customerName" class="mb-1.5 block text-sm font-bold">Tu nombre</label>
+              <input id="customerName" name="customerName" type="text" autocomplete="name" required class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+            </div>
+            <div>
+              <label for="customerPhone" class="mb-1.5 block text-sm font-bold">Tu teléfono</label>
+              <input id="customerPhone" name="customerPhone" type="tel" autocomplete="tel" required class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+            </div>
+          </div>
+
+          <fieldset class="space-y-5">
+            <legend class="mb-4 text-lg font-bold">Elige productos y cantidades</legend>
+            <p id="pendingCartNotice" role="status" class="border-l-4 border-brand-cyan bg-brand-softCyan px-4 py-3 text-sm text-brand-brown" hidden></p>
+            <div>
+              <h3 class="mb-2 font-title text-lg font-bold text-brand-pink">Chocobananos</h3>
+              <div id="chocobananoOrderItems" class="divide-y divide-brand-brown/10 border-y border-brand-brown/10"></div>
+            </div>
+
+            <div>
+              <h3 class="mb-2 font-title text-lg font-bold text-brand-cyan">Paletas en vaso</h3>
+              <div id="paletaOrderItems" class="divide-y divide-brand-brown/10 border-y border-brand-brown/10"></div>
+            </div>
+          </fieldset>
+
+          <div>
+            <label for="orderReference" class="mb-1.5 block text-sm font-bold">Referencia o personalización <span class="font-normal text-brand-brown/55">(opcional)</span></label>
+            <textarea id="orderReference" name="orderReference" rows="3" placeholder="Cuéntanos cómo los quieres: cobertura, toppings, colores o una referencia especial" class="w-full resize-y rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none placeholder:text-brand-brown/40 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"></textarea>
+          </div>
+          <p id="orderValidationMessage" role="alert" class="text-sm font-semibold text-red-700" hidden>Elige al menos un producto o escribe tu pedido en la referencia.</p>
+
+          <div>
+            <label for="deliveryType" class="mb-1.5 block text-sm font-bold">¿Cómo recibirás tu pedido?</label>
+            <select id="deliveryType" name="deliveryType" class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+              <option value="pickup">Lo recogeré</option>
+              <option value="delivery">Envío a domicilio</option>
+            </select>
+            <p id="deliverySettingsInfo" class="mt-1 text-sm text-brand-brown/60"></p>
+          </div>
+          <p id="deliveryValidationMessage" role="alert" class="text-sm font-semibold text-red-700" hidden></p>
+
+          <div class="address-field hidden">
+            <label for="deliveryAddress" class="mb-1.5 block text-sm font-bold">Dirección de entrega</label>
+            <input id="deliveryAddress" name="deliveryAddress" type="text" autocomplete="street-address" class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+          </div>
+
+          <div>
+            <label for="paymentMethod" class="mb-1.5 block text-sm font-bold">Forma de pago</label>
+            <select id="paymentMethod" name="paymentMethod" class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+              <option value="transfer">Depósito o transferencia</option>
+              <option value="cash">Efectivo al recibir (pago físico)</option>
+            </select>
+          </div>
+
+          <div id="bankAccountDetails" class="space-y-2 border-l-4 border-brand-cyan bg-brand-softCyan p-4" hidden>
+            <fieldset id="bankAccountInfo" class="space-y-2" hidden>
+              <legend class="mb-2 text-sm font-bold">Elige a cuál cuenta depositar</legend>
+              <div id="bankAccountChoices" class="grid gap-2"></div>
+            </fieldset>
+            <p id="bankAccountSetupMessage" class="text-sm text-brand-brown/70">Los datos de la cuenta todavía no están configurados.</p>
+          </div>
+          <p id="paymentValidationMessage" role="alert" class="text-sm font-semibold text-red-700" hidden>Configura al menos una cuenta completa antes de recibir pedidos por depósito.</p>
+
+          <div>
+            <label for="orderNotes" class="mb-1.5 block text-sm font-bold">Otra nota <span class="font-normal text-brand-brown/55">(opcional)</span></label>
+            <input id="orderNotes" name="orderNotes" type="text" placeholder="Horario u otra indicación" class="w-full rounded-md border border-brand-brown/20 bg-white px-3 py-2.5 outline-none placeholder:text-brand-brown/40 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20">
+          </div>
+
+          <button type="submit" class="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#168C4A] px-5 py-3 font-bold text-white transition-colors hover:bg-[#11733c] sm:w-auto">
+            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+            Preparar pedido en WhatsApp
+          </button>
+          <p class="text-xs leading-relaxed text-brand-brown/60">Se abrirá WhatsApp con los datos que escribiste. El pedido no se guarda en esta página.</p>
+        </form>
+      </section>
+
+      <aside class="border-t border-brand-brown/15 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0" aria-labelledby="social-title">
+        <h2 id="social-title" class="font-title text-2xl font-bold">Conecta con ChocoMagia</h2>
+        <p class="mt-2 text-brand-brown/70">Encuentra nuestras novedades y escríbenos por tu red favorita.</p>
+
+        <a href="https://web.whatsapp.com/" data-whatsapp-link target="_blank" rel="noopener noreferrer" class="mt-6 flex items-center gap-4 border-b border-brand-brown/10 py-4 text-brand-brown hover:text-[#168C4A]">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-[#168C4A] text-xl text-white"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+          <span><strong class="block">WhatsApp</strong><span class="text-sm text-brand-brown/60">88173833</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-sm" aria-hidden="true"></i>
+        </a>
+
+        <div class="mt-7">
+          <h3 class="mb-3 text-sm font-bold uppercase tracking-wide text-brand-brown/65">Nuestras redes</h3>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" data-social-profile="facebook" aria-label="Facebook de ChocoMagia" aria-disabled="true" title="Facebook" class="grid h-12 w-12 place-items-center rounded-full bg-[#1877F2] text-xl text-white aria-disabled:cursor-not-allowed aria-disabled:opacity-60"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" data-social-profile="instagram" aria-label="Instagram de ChocoMagia" aria-disabled="true" title="Instagram" class="grid h-12 w-12 place-items-center rounded-full bg-[#C13584] text-xl text-white aria-disabled:cursor-not-allowed aria-disabled:opacity-60"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" data-social-profile="tiktok" aria-label="TikTok de ChocoMagia" aria-disabled="true" title="TikTok" class="grid h-12 w-12 place-items-center rounded-full bg-[#171717] text-xl text-white aria-disabled:cursor-not-allowed aria-disabled:opacity-60"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          </div>
+          <p class="mt-3 text-xs text-brand-brown/55">Los enlaces de Facebook, Instagram y TikTok se agregan al configurar los perfiles del negocio.</p>
+        </div>
+
+        <div class="mt-10 border-t border-brand-brown/15 pt-6">
+          <h3 class="font-title text-lg font-bold">¿Tienes una consulta?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-brand-brown/70">Escríbenos por WhatsApp y te ayudaremos con sabores, disponibilidad y entregas.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="mt-10 bg-brand-brown px-4 py-6 text-center text-sm text-white/70">
+    &copy; 2026 ChocoMagia. Todos los derechos reservados.
+  </footer>
+  <script src="store-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre y pide las variedades de chocobananos y paletas de ChocoMagia.">
+  <title>Variedades | ChocoMagia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="sttely.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#FFF9EF] text-brand-brown">
+  <header class="sticky top-0 z-40 border-b border-brand-brown/10 bg-[#FFF9EF]/95 px-4 py-3 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
+      <a href="index.html" class="flex items-center gap-3 font-title text-2xl font-bold text-brand-pink" aria-label="ChocoMagia, inicio">
+        <img src="img/logo.jpeg" alt="Logo de ChocoMagia" class="site-logo">
+        <span>Choco<span class="text-brand-cyan">Magia</span></span>
+      </a>
+
+      <nav aria-label="Navegación principal" class="order-3 w-full md:order-2 md:w-auto">
+        <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2 font-semibold">
+          <li><a href="index.html" class="hover:text-brand-pink">Inicio</a></li>
+          <li><a href="index.html#menu" class="hover:text-brand-pink">Menú</a></li>
+          <li><a href="nosotros.html" class="hover:text-brand-pink">Nosotros</a></li>
+          <li><a href="variedades.html" aria-current="page" class="text-brand-pink">Variedades</a></li>
+          <li><a href="contacto.html" class="hover:text-brand-pink">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button id="cartBtn" type="button" onclick="openCart()" aria-label="Abrir carrito" class="relative rounded-full border border-brand-brown/10 bg-white p-2.5 text-brand-brown shadow-sm hover:bg-brand-softPink">
+        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+        <span id="cartCount" class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-pink text-xs font-bold text-white">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="productos" class="mx-auto w-full max-w-7xl flex-grow px-4 py-10 lg:px-8">
+    <div class="mb-10 text-center">
+      <p class="mb-2 font-bold uppercase tracking-widest text-brand-pink">Hechos para disfrutar</p>
+      <h1 class="font-title text-4xl font-bold text-brand-brown sm:text-5xl">Nuestras variedades</h1>
+      <p class="mx-auto mt-3 max-w-2xl text-brand-brown/70">Elige tu favorito y agrégalo al carrito.</p>
+    </div>
+
+    <section aria-labelledby="chocobananos-title" class="mb-12">
+      <div id="chocobananoGrid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+    </section>
+
+    <section aria-labelledby="paletas-title">
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-2 border-b-2 border-brand-cyan/30 pb-3">
+        <h2 id="paletas-title" class="font-title text-2xl font-bold text-brand-cyan">Paletas en Vaso</h2>
+      </div>
+
+      <div id="paletaGrid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+  </main>
+
+  <footer class="bg-brand-brown px-4 py-6 text-center text-sm text-white/70">
+    &copy; 2026 ChocoMagia. Todos los derechos reservados.
+  </footer>
+
+  <div id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle" class="fixed inset-0 z-50 hidden justify-end bg-black/50 backdrop-blur-sm">
+    <div class="flex h-full w-full max-w-md flex-col justify-between bg-white p-6 shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between border-b border-brand-brown/10 pb-4">
+          <h2 id="cartTitle" class="font-title text-2xl font-bold text-brand-brown">Tu Carrito</h2>
+          <button type="button" onclick="closeCart()" aria-label="Cerrar carrito" class="text-xl text-brand-brown/60">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="cartItemsContainer" class="max-h-[60vh] space-y-4 overflow-y-auto py-4">
+          <p class="py-8 text-center text-brand-brown/60">Tu carrito está vacío.</p>
+        </div>
+      </div>
+      <div class="space-y-4 border-t border-brand-brown/10 pt-4">
+        <div class="flex justify-between font-title text-xl font-bold">
+          <span>Total:</span>
+          <span id="cartTotal" class="text-brand-pink">Lps 0.00</span>
+        </div>
+        <button type="button" onclick="checkout()" class="w-full rounded-full bg-brand-pink py-3 font-title font-bold text-white shadow-lg">Continuar al formulario</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="store-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

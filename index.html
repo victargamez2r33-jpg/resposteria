@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChocoMagia - ¡La Magia de lo Dulce!</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="sttely.css">
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brand-pink selection:text-white">
+
+  <!-- ================= HEADER & NAV ================= -->
+  <header class="sticky top-0 z-50 bg-[#FFF9EF]/90 backdrop-blur-md border-b border-brand-brown/10 px-4 lg:px-8 py-3 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-2 group">
+        <img src="img/logo.jpeg" alt="Logo de ChocoMagia" class="site-logo transform transition-transform group-hover:scale-105">
+        <div class="flex flex-col">
+          <span class="font-title text-2xl font-bold tracking-wide text-brand-pink leading-none">
+            Choco<span class="text-brand-cyan">Magia</span>
+          </span>
+          <span class="text-[10px] font-bold text-brand-brown/70 tracking-widest uppercase">Bananas & Paletas</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-8 font-semibold text-brand-brown">
+        <a href="#menu" class="hover:text-brand-pink transition-colors relative py-1">Menú</a>
+        <a href="nosotros.html" class="hover:text-brand-pink transition-colors relative py-1">Nosotros</a>
+        <a href="variedades.html" class="hover:text-brand-pink transition-colors relative py-1">Variedades</a>
+        <a href="contacto.html" class="hover:text-brand-pink transition-colors relative py-1">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#menu" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-brand-pink to-pink-500 hover:from-pink-600 hover:to-brand-pink text-white font-bold px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all active:translate-y-0">
+          Pedir Ahora
+        </a>
+
+        <button id="cartBtn" type="button" onclick="openCart()" aria-label="Abrir carrito" class="relative p-2.5 rounded-full bg-white hover:bg-brand-softPink border border-brand-brown/10 text-brand-brown transition-colors shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-lg" aria-hidden="true"></i>
+          <span id="cartCount" class="absolute -top-1 -right-1 bg-brand-pink text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+        </button>
+
+        <a href="login.html" aria-label="Acceso administrativo" title="Acceso administrativo" class="p-2.5 rounded-full bg-white hover:bg-brand-softCyan border border-brand-brown/10 text-brand-brown transition-colors shadow-sm">
+          <i class="fa-regular fa-user text-lg"></i>
+        </a>
+
+        <button type="button" onclick="toggleMobileMenu()" aria-label="Abrir menú" aria-controls="mobileMenu" class="md:hidden p-2.5 rounded-full bg-white border border-brand-brown/10 text-brand-brown">
+          <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileMenu" aria-label="Navegación móvil" class="hidden md:hidden pt-4 pb-2 border-t border-brand-brown/10 mt-3 space-y-3">
+      <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 px-4 rounded-xl hover:bg-brand-softPink font-semibold">Menú</a>
+      <a href="nosotros.html" onclick="toggleMobileMenu()" class="block py-2 px-4 rounded-xl hover:bg-brand-softPink font-semibold">Nosotros</a>
+      <a href="variedades.html" onclick="toggleMobileMenu()" class="block py-2 px-4 rounded-xl hover:bg-brand-softPink font-semibold">Variedades</a>
+      <a href="contacto.html" onclick="toggleMobileMenu()" class="block py-2 px-4 rounded-xl hover:bg-brand-softPink font-semibold">Contacto</a>
+      <a href="#menu" onclick="toggleMobileMenu()" class="block text-center bg-brand-pink text-white font-bold py-3 rounded-full shadow">Pedir Ahora</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="hero-title" class="relative overflow-hidden py-12 lg:py-20 px-4 lg:px-8 bg-gradient-to-b from-[#FFF9EF] via-brand-softPink/30 to-[#FFF9EF]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="text-center lg:text-left space-y-6 z-10">
+        <div class="inline-flex items-center gap-2 bg-white border border-brand-pink/30 px-4 py-1.5 rounded-full text-brand-pink font-bold text-sm shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-pink animate-ping"></span>
+          ¡Especialistas en Chocobananos y Paletas!
+        </div>
+
+        <h1 id="hero-title" class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+          ¡La Magia <br>
+          de lo <span class="text-gradient">Dulce!</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-brand-brown/80 max-w-lg mx-auto lg:mx-0 font-medium">
+          Bananos cubiertos de chocolate crocante, paletas cremosas en vaso con cereal y la más deliciosa variedad helada.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-brand-pink to-brand-cyan hover:opacity-95 text-white font-title text-xl font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+            <span>¡Ver Menú!</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="variedades.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border-2 border-brand-brown/20 text-brand-brown font-title text-lg font-bold px-6 py-3.5 rounded-full hover:bg-brand-softCyan hover:border-brand-cyan transition-all">
+            Explorar Variedades
+          </a>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center items-center">
+        <div class="relative w-full max-w-md aspect-square bg-white/70 backdrop-blur-sm rounded-3xl p-6 border-4 border-white shadow-2xl flex items-center justify-center gap-4 overflow-hidden">
+          
+          <div class="animate-float flex flex-col items-center">
+            <svg class="w-40 h-64 sm:w-48 sm:h-72 drop-shadow-xl" viewBox="0 0 200 300" fill="none">
+              <rect x="90" y="210" width="20" height="70" rx="10" fill="#D4A373" stroke="#8C5E3C" stroke-width="3"/>
+              <path d="M60 70 C60 20, 140 20, 140 70 L140 170 C140 205, 60 205, 60 170 Z" fill="#FFE57F"/>
+              <path d="M56 65 C56 15, 144 15, 144 65 L144 140 C130 155, 120 130, 100 150 C80 130, 70 155, 56 140 Z" fill="#4A2311"/>
+            </svg>
+            <span class="font-title text-sm font-bold bg-brand-pink text-white px-3 py-1 rounded-full shadow -mt-4">Chocobanano</span>
+          </div>
+
+          <div class="animate-float-delayed flex flex-col items-center">
+            <svg class="w-36 h-56 sm:w-44 sm:h-64 drop-shadow-xl" viewBox="0 0 180 260" fill="none">
+              <rect x="80" y="10" width="18" height="110" rx="8" fill="#E6C280" stroke="#B88B4A" stroke-width="3" transform="rotate(12 80 10)"/>
+              <path d="M30 90 L150 90 L135 230 L45 230 Z" fill="#E2F5F5" stroke="#00C9C8" stroke-width="3"/>
+              <path d="M32 95 C60 105, 120 85, 148 95 L135 228 L45 228 Z" fill="#FFFDF5"/>
+            </svg>
+            <span class="font-title text-sm font-bold bg-brand-cyan text-white px-3 py-1 rounded-full shadow -mt-4">Paleta en Vaso</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <section id="menu" aria-labelledby="menu-title" class="py-12 px-4 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 id="menu-title" class="text-3xl sm:text-4xl font-bold text-brand-brown mb-3">Nuestros Favoritos</h2>
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+          <button onclick="filterCategory('all', event)" class="cat-btn active bg-brand-pink text-white font-bold px-5 py-2 rounded-full shadow text-sm transition-all">Todos</button>
+          <button onclick="filterCategory('chocobanano', event)" class="cat-btn bg-brand-softPink text-brand-brown hover:bg-brand-pink hover:text-white font-bold px-5 py-2 rounded-full text-sm transition-all">Chocobananos</button>
+          <button onclick="filterCategory('paleta', event)" class="cat-btn bg-brand-softCyan text-brand-brown hover:bg-brand-cyan hover:text-white font-bold px-5 py-2 rounded-full text-sm transition-all">Paletas en Vaso</button>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="contacto" class="bg-brand-brown text-white pt-12 pb-6 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto text-center text-xs text-white/50">
+      &copy; 2026 ChocoMagia. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- ================= SHOPPING CART MODAL ================= -->
+  <div id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex justify-end">
+    <div class="bg-white w-full max-w-md h-full shadow-2xl p-6 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-brand-brown/10">
+          <h2 id="cartTitle" class="font-title text-2xl font-bold text-brand-brown">Tu Carrito</h2>
+          <button type="button" onclick="closeCart()" aria-label="Cerrar carrito" class="text-brand-brown/60 text-xl"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div id="cartItemsContainer" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+          <p class="text-center text-brand-brown/60 py-8">Tu carrito está vacío 🍌🍦</p>
+        </div>
+      </div>
+      <div class="border-t border-brand-brown/10 pt-4 space-y-4">
+        <div class="flex justify-between font-title text-xl font-bold">
+          <span>Total:</span>
+          <span id="cartTotal" class="text-brand-pink">Lps 0.00</span>
+        </div>
+        <button type="button" onclick="checkout()" class="w-full bg-brand-pink text-white font-title font-bold py-3 rounded-full shadow-lg">Continuar al formulario</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Script -->
+  <script src="store-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
